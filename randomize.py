@@ -2,6 +2,7 @@ from os import walk, path, rename, makedirs
 from shutil import rmtree
 from string import ascii_lowercase
 from random import choice
+from pathlib import Path
 
 def random_string(length = 4):
     return ''.join(choice(ascii_lowercase) for _ in range(length))
@@ -57,8 +58,8 @@ def rename_package_dir(random_package: str):
         print(f"Renamed: {package_path1} -> {new_package_path1}")
         rename(package_path2, new_package_path2)
         print(f"Renamed: {package_path2} -> {new_package_path2}")
-        rmtree("/app/src/main/java/cn/")
-        rmtree("/app/src/test/java/cn/")
+        rmtree(Path("./app/src/main/java/cn/"))
+        rmtree(Path("./app/src/test/java/cn/"))
     except FileNotFoundError:
         print(f"Directory not found: {package_path1}")
     except Exception as e:
